@@ -1,0 +1,56 @@
+{% extends 'dogs/base.html' %}
+{% load 1 %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Skystore</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+</head>
+
+
+{% block name %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Главная страница</h1>
+</div>
+{% endblock %}
+{% block telo %}
+<div class="container">
+  <div class="row text-start">
+    <div class="album py-5 bg-body-tertiary">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {% for object in object %}
+          <div class="col">
+            <div class="card shadow-sm">
+                <img  src="{{ object.image|load_image }}" width="100%" height="225">
+              <div class="card-body">
+                <p class="card-text">{{ object.name }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <div class="card-body">
+                      <p class="card-text">{{ object.description }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+ </div>
+
+{% endblock %}
+
+</div>
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
